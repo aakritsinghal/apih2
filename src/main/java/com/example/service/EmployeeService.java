@@ -2,6 +2,8 @@ package com.example.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.example.entity.Employee;
@@ -12,7 +14,11 @@ public class EmployeeService {
     @Autowired
     EmployeeRepository repository;
     public Employee getEmployeeById(int id) {
-        return repository.findById(id).get();
+        Optional<Employee> empl = repository.findById(id);
+        if (empl.isPresent()) {
+            return empl.get();
+        }
+        return null;
     }
     public List<Employee> getAllEmployees(){
         List<Employee> employees = new ArrayList<Employee>();

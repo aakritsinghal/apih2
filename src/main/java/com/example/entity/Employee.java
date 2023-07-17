@@ -11,7 +11,7 @@ public class Employee {
     @Id
     @Column
     private int id;
-    @Column
+    @Column(name = "FullName")
     private String name;
     @Column
     private int age;
